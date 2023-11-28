@@ -93,8 +93,14 @@ public class CustomerSync {
         if (externalCustomer.isCompany()) {
             customer.setCompanyNumber(externalCustomer.getCompanyNumber());
             customer.setCustomerType(CustomerType.COMPANY);
+            customer.setBonusPoints(0);
         } else {
             customer.setCustomerType(CustomerType.PERSON);
+            int externalPoints = externalCustomer.getBonusPoints();
+            int currentPoints = customer.getBonusPoints();
+            if (externalPoints != currentPoints) {
+                customer.setBonusPoints(externalPoints);
+            }
         }
     }
 
