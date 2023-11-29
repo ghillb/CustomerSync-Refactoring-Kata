@@ -1,0 +1,13 @@
+# 1 if needed, install pre-commit: `pipx install pre-commit`
+# 2 run `pre-commit install` to install the git hooks
+# 3 test hooks via pre-commit run --all-files
+repos:
+  - repo: local
+    hooks:
+      - id: test
+        name: Run CustomerSyncTest
+        entry: mvn test --file java/pom.xml -Dtest=codingdojo.CustomerSyncTest
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [commit]

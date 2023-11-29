@@ -48,4 +48,20 @@ public class CustomerDataAccess {
         customerDataLayer.updateShoppingList(consumerShoppingList);
         customerDataLayer.updateCustomerRecord(customer);
     }
+
+    public void updateDuplicate(ExternalCustomer externalCustomer, Customer duplicate) {
+        if (duplicate == null) {
+            duplicate = new Customer();
+            duplicate.setExternalId(externalCustomer.getExternalId());
+            duplicate.setMasterExternalId(externalCustomer.getExternalId());
+        }
+
+        duplicate.setName(externalCustomer.getName());
+
+        if (duplicate.getInternalId() == null) {
+            createCustomerRecord(duplicate);
+        } else {
+            updateCustomerRecord(duplicate);
+        }
+    }
 }
