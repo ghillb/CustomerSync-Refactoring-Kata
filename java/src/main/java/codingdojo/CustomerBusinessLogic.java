@@ -3,7 +3,7 @@ package codingdojo;
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerBusinessLogic {
+public class CustomerBusinessLogic implements ICustomerBusinessLogic {
     private final CustomerMatchMaker customerMatchMaker;
     private final CustomerDataAccess customerDataAccess;
 
