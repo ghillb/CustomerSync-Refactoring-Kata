@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Gero Hillebrandt" />
+  <meta name="date" content="2023-11-01" />
+  <title>CustomerSync-Refactoring-Kata</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel='stylesheet' type='text/css' href='eib.css' />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">CustomerSync-Refactoring-Kata</h1>
+  <p class="author">
+Gero Hillebrandt
+  </p>
+  <p class="date">2023-11-01</p>
+</div>
+<div id="overview" class="slide section level2">
+<h1>Overview</h1>
+<p>This PR adds bonus points sync logic, introduces refactoring in the customer data handling and synchronization logic and adds some dev tooling.</p>
+<div style="text-align: center;">
+<p><a href="https://github.com/ghillb/CustomerSync-Refactoring-Kata">Link to repository</a></p>
+<p><a href="https://github.com/ghillb/CustomerSync-Refactoring-Kata/pull/1">Link to pull request</a></p>
+</div>
+</div>
+<div id="key-changes" class="slide section level2">
+<h1>Key Changes</h1>
+<ul>
+<li><strong>New Logic: Bonus Points synchronization</strong>
+<ul>
+<li>Add logic to synchronize the additional field <code>bonusPoints</code> from the ExternalCustomer to the Customer.</li>
+</ul></li>
+</ul>
+</div>
+<div id="refactoring" class="slide section level2">
+<h1>Refactoring</h1>
+<ul>
+<li><strong>New Class: <code>CustomerBusinessLogic</code></strong>
+<ul>
+<li>Centralizes business logic related to customer processing.</li>
+</ul></li>
+<li><strong>New Class: <code>CustomerMatchMaker</code></strong>
+<ul>
+<li>Dedicated to matching external customer data with existing records.</li>
+</ul></li>
+<li><strong>Modified <code>CustomerDataAccess</code> Class</strong>
+<ul>
+<li>Enhanced to include new methods for updating duplicate customer records.</li>
+</ul></li>
+<li><strong>Refactored <code>CustomerSync</code> Class</strong>
+<ul>
+<li>Streamlined by offloading responsibilities to <code>CustomerBusinessLogic</code>.</li>
+</ul></li>
+</ul>
+</div>
+<div id="dev-tooling" class="slide section level2">
+<h1>Dev Tooling</h1>
+<ul>
+<li><strong>New <code>.pre-commit-config.yaml</code></strong>
+<ul>
+<li>Integrates pre-commit hook to automate unit test run before commits are made.</li>
+</ul></li>
+<li><strong>New GitHub Action Workflow for CI</strong>
+<ul>
+<li>Automatically runs tests on push and pull request events.</li>
+</ul></li>
+</ul>
+</div>
+<div id="rationale" class="slide section level2">
+<h1>Rationale</h1>
+<ul>
+<li><strong>Improved Code Organization:</strong> The addition and modification of classes aims to segregate data access, business logic, and synchronization tasks, promoting cleaner code and easier maintenance.</li>
+</ul>
+</div>
+</body>
+</html>
